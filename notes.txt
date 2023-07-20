@@ -1,0 +1,4 @@
+//Clear out database
+dotnet ef database update 0 
+dotnet ef migrations add Initialize
+dotnet ef database update
