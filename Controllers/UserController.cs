@@ -43,5 +43,18 @@ namespace AdminPortal.Controllers
             }
             return Ok(existingUser);
         }
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> DeleteUser(int id){
+            
+            if(_context.Admins.Any(x => x.UserId == id)) return BadRequest($"USER IS ADMIN: REMOVE FROM ADMIN BEFORE CONTINUING");
+            var user = await _context.Users.FindAsync(id);
+
+            if(user == null) return NotFound($"USER: {id} NOT FOUND");
+
+            _context.Users.Remove(user);
+            await _context.SaveChangesAsync();
+            return Ok($"USER: {id} HAS BEEN SUCCESSFULLY REMOVED");
+        }
+        
     }
 }

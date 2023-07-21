@@ -42,5 +42,15 @@ namespace AdminPortal.Controllers
             return NotFound($"ID:{id} was not found in USERS");
 
         }
+        [HttpDelete("{userId}")]
+        public async Task<ActionResult> RemoveAdminRights(int userId){
+            
+            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.UserId == userId);
+            if(admin == null) return NotFound($"USER: {userId} WAS NOT AN ADMIN");
+            _context.Admins.Remove(admin);
+            await _context.SaveChangesAsync();
+
+            return Ok($"ADMIN: {admin.Id} IS NO LONGER AN ADMIN");
+        }
     }
 }

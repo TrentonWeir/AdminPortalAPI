@@ -1723,23 +1723,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\trenton.weir\\.nuget\\packages\\": {},
+    "C:\\Users\\Trenton Weir\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\j\\SchoolAPI\\API\\AdminPortal\\AdminPortal.csproj",
+      "projectUniqueName": "W:\\Web\\School\\AdminPortalAPI\\AdminPortal.csproj",
       "projectName": "AdminPortal",
-      "projectPath": "C:\\j\\SchoolAPI\\API\\AdminPortal\\AdminPortal.csproj",
-      "packagesPath": "C:\\Users\\trenton.weir\\.nuget\\packages\\",
-      "outputPath": "C:\\j\\SchoolAPI\\API\\AdminPortal\\obj\\",
+      "projectPath": "W:\\Web\\School\\AdminPortalAPI\\AdminPortal.csproj",
+      "packagesPath": "C:\\Users\\Trenton Weir\\.nuget\\packages\\",
+      "outputPath": "W:\\Web\\School\\AdminPortalAPI\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\trenton.weir\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Trenton Weir\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1749,7 +1749,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "C:\\Program Files\\dotnet\\sdk\\7.0.306\\Sdks\\Microsoft.NET.Sdk.Web\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1806,7 +1805,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -5,7 +5,25 @@ namespace AdminPortal.Data
     public static class DbInitializer
     {
         public static void Initialize(UserContext context){
-            if(context.Users.Any()) return;
+            initUsers(context);
+            initAdmins(context);
+
+        }
+        public static void initAdmins(UserContext ctx){
+            if(ctx.Admins.Any()) return;
+            List<AdminDTO> admins = new(){
+                new(){
+                    UserId = 1
+                },
+                new(){
+                    UserId = 4
+                }
+            };
+            ctx.Admins.AddRange(admins);
+            ctx.SaveChanges();
+        }
+        public static void initUsers(UserContext context){
+        if(context.Users.Any()) return;
 
             List<UserDTO> users = new(){
                 new(){
@@ -41,7 +59,8 @@ namespace AdminPortal.Data
             context.Users.AddRange(users);
 
             context.SaveChanges();
-
         }
     }
+
+    
 }
