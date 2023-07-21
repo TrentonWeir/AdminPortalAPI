@@ -16,6 +16,12 @@ namespace AdminPortal.Data
                     UserId = 1
                 },
                 new(){
+                    UserId = 2
+                },
+                new(){
+                    UserId = 3
+                },
+                new(){
                     UserId = 4
                 }
             };
@@ -29,9 +35,30 @@ namespace AdminPortal.Data
                 new(){
                     FName = "Trenton",
                     LName = "Weir",
-                    UserName = "tweir12@ivytech.edu",
+                    UserName = "tweir12",
                     Email = "tweir12@ivytech.edu",
                     Password = "TotalySecure->&Stuff"
+                },
+                new(){
+                    FName = "Macey",
+                    LName = "Panaro",
+                    UserName = "mpanaro",
+                    Email = "mpanaro@ivytech.edu",
+                    Password = "Password123"
+                },
+                new(){
+                    FName = "Ella",
+                    LName = "Sepetjian",
+                    UserName = "eseptjian",
+                    Email = "eseptjian@ivytech.edu",
+                    Password = "Password123"
+                },
+                new(){
+                    FName = "Bradley",
+                    LName = "Harrison",
+                    UserName = "bharrison",
+                    Email = "bharrison@ivytech.edu",
+                    Password = "Password123"
                 },
                 new(){
                     FName = "Random 1",
@@ -48,9 +75,9 @@ namespace AdminPortal.Data
                     Password = "Password123"
                 },
                 new(){
-                    FName = "Hello Senpai",
+                    FName = "Senpai",
                     LName = "Ahhh",
-                    UserName = "ella",
+                    UserName = "scream",
                     Email = "scream@to-many.com",
                     Password = "Password123"
                 },

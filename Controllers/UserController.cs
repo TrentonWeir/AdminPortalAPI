@@ -18,11 +18,15 @@ namespace AdminPortal.Controllers
         [HttpGet]
         public async Task<ActionResult<List<UserDTO>>> GetUsers(){
             var users = await _context.Users.ToListAsync();
+            users.ForEach(u => u.Password = string.Empty);
             return Ok(users);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<UserDTO>> GetUser(int id){
-            return await _context.Users.FindAsync(id);
+            var user = await _context.Users.FindAsync(id);
+            if(user == null) return NotFound("USER NOT FOUND");
+            user.Password = "";
+            return user;
         }
         [HttpPost("user")]
         public async Task<ActionResult<UserDTO>> UpdateUser(UserDTO user)
@@ -31,6 +35,7 @@ namespace AdminPortal.Controllers
             var existingUser = await _context.Users.FindAsync(user.Id);
             if(existingUser == null){
                 await _context.Users.AddAsync(user);
+                user.Password = string.Empty;
                 await _context.SaveChangesAsync();
                 return Ok(user);
             }
@@ -39,8 +44,10 @@ namespace AdminPortal.Controllers
                 existingUser.LName = user.LName;
                 existingUser.Email = user.Email;
                 existingUser.UserName = user.UserName;
+                existingUser.Password = user.Password;
                 await _context.SaveChangesAsync();
             }
+            existingUser.Password = string.Empty;
             return Ok(existingUser);
         }
         [HttpDelete("{id}")]

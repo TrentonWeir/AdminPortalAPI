@@ -19,10 +19,18 @@ namespace AdminPortal.Controllers
             return Ok(await _context.Admins.ToListAsync());
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<AdminDTO>> GetAdmin(int id){
-            return await _context.Admins.FindAsync(id);
+        [HttpGet("{userId}")]
+        public async Task<ActionResult<AdminDTO>> GetAdmin(int userId){
+
+            var admin = await _context.Admins.FirstOrDefaultAsync(a => a.UserId == userId);
+            if(admin == null) return NotFound($"USER IS NOT AN ADMIN: {userId}");
+            return admin;
+
         }
+        // [HttpGet("{userId}")]
+        // public async Task<ActionResult<bool>> GetIsAdmin(int userId){
+        //     return await _context.Admins.AnyAsync(admin => admin.UserId == userId);
+        // }
 
         [HttpPost("{id}")]
         public async Task<ActionResult<AdminDTO>> AddAdmin(int id)
@@ -43,14 +51,15 @@ namespace AdminPortal.Controllers
 
         }
         [HttpDelete("{userId}")]
-        public async Task<ActionResult> RemoveAdminRights(int userId){
+        public async Task<ActionResult<string>> RemoveAdminRights(int userId){
             
             var admin = await _context.Admins.FirstOrDefaultAsync(a => a.UserId == userId);
-            if(admin == null) return NotFound($"USER: {userId} WAS NOT AN ADMIN");
+            if(admin == null) return NotFound(new {Message = $"USER: {userId} WAS NOT AN ADMIN"});
             _context.Admins.Remove(admin);
             await _context.SaveChangesAsync();
 
-            return Ok($"ADMIN: {admin.Id} IS NO LONGER AN ADMIN");
+            return Ok(new {Message = $"USER: {userId} IS NO LONGER AN ADMIN"});
         }
+       
     }
 }
