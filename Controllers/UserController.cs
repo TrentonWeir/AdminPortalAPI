@@ -31,20 +31,40 @@ namespace AdminPortal.Controllers
         [HttpPost("user")]
         public async Task<ActionResult<UserDTO>> UpdateUser(UserDTO user)
         {
-            
+
             var existingUser = await _context.Users.FindAsync(user.Id);
-            if(existingUser == null){
-                await _context.Users.AddAsync(user);
-                user.Password = string.Empty;
+            if (existingUser == null)
+            {
+                // Add a new user and hash the password before storing it
+                var newUser = new UserDTO
+                {
+                    FName = user.FName,
+                    LName = user.LName,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Password = user.Password // Hash the password before storing it
+                };
+                _context.Users.Add(newUser);
                 await _context.SaveChangesAsync();
-                return Ok(user);
+
+                // Return the created UserDTO
+                user.Password = string.Empty;
+                return Ok(newUser);
             }
-            else{
+            else
+            {
+                // Update the existing user
                 existingUser.FName = user.FName;
                 existingUser.LName = user.LName;
                 existingUser.Email = user.Email;
                 existingUser.UserName = user.UserName;
-                existingUser.Password = user.Password;
+
+                // Only update the password if a new password is provided
+                if (!string.IsNullOrEmpty(user.Password))
+                {
+                    existingUser.Password = user.Password; // Hash the new password
+                }
+
                 await _context.SaveChangesAsync();
             }
             existingUser.Password = string.Empty;
